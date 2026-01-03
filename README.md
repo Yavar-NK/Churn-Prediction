@@ -24,3 +24,10 @@ This project implements a modular Machine Learning pipeline to predict customer 
 1. Clone the repository.
 2. Install dependencies: `pip install pandas scikit-learn imbalanced-learn`
 3. Run the training script: `python src/train.py`
+
+
+## 📊 Evaluation Metrics
+After applying SMOTE to handle the class imbalance, the Logistic Regression model achieved:
+* **F1-Score (Churn Class)**: ~0.80
+* **Recall**: High sensitivity in detecting customers who are actually likely to churn.
+* **Balance**: Significantly reduced the bias towards the majority class compared to the baseline model.
