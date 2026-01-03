@@ -31,3 +31,22 @@ After applying SMOTE to handle the class imbalance, the Logistic Regression mode
 * **F1-Score (Churn Class)**: ~0.80
 * **Recall**: High sensitivity in detecting customers who are actually likely to churn.
 * **Balance**: Significantly reduced the bias towards the majority class compared to the baseline model.
+
+## 🛠️ Requirements
+To run this project, you need to install the following libraries:
+* `pandas`
+* `scikit-learn`
+* `imbalanced-learn` (for SMOTE)
+
+## 🚀 How to Run
+1. Clone the repository.
+2. Ensure the dataset is in the `data/` folder.
+3. Run the main script: `python src/train.py`
+
+## ✅ Validation
+The model was evaluated using a **stratified 80/20 train-test split** to ensure the results are reliable and the class distribution is preserved.
+
+
+
+
+
