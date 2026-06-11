@@ -1,22 +1,21 @@
-Churn Prediction Pipeline
-This project implements a modular, production-ready machine learning pipeline for customer churn prediction. The focus is on reproducibility, scalability, and lifecycle management, utilizing best practices in MLOps.
+# Churn Prediction Pipeline
 
-🚀 Project Overview
-The pipeline addresses class imbalance using SMOTE and leverages Logistic Regression to predict customer churn. The structure is designed to facilitate easy deployment, monitoring, and model versioning.
+*The graph above illustrates the model's performance in identifying customer churn patterns.*
 
-🛠 Tech Stack
-Language: Python
+## 🛠️ Tech Stack
+- **Language:** Python
+- **Libraries:** TensorFlow/Keras, Pandas, NumPy, Scikit-learn, MLflow
+- **Environment:** Docker, Linux, Local/Cloud
 
-Pipeline: Modular src/ architecture
+## 🚀 Features
+- Automated data preprocessing and feature engineering.
+- Robust training pipeline with experiment tracking via MLflow.
+- Modular architecture for seamless inference.
+- Containerized deployment using Docker.
 
-Experiment Tracking: MLflow
+## 📁 Project Structure
 
-Containerization: Docker
-
-Techniques: SMOTE (Synthetic Minority Over-sampling Technique) for handling class imbalance.
-
-📂 Directory Structure
-
+```text
 .
 ├── models/             # Serialized model artifacts
 ├── mlruns/             # MLflow experiment tracking logs
@@ -25,18 +24,3 @@ Techniques: SMOTE (Synthetic Minority Over-sampling Technique) for handling clas
 │   └── train.py        # Training pipeline script
 ├── Dockerfile          # Container configuration
 └── requirements.txt    # Project dependencies
-
-⚙️ How to Run
-
-Clone the repository:
-git clone [https://github.com/Yavar-NK/Churn-Prediction.git](https://github.com/Yavar-NK/Churn-Prediction.git)
-
-Install dependencies:
-pip install -r requirements.txt
-
-Run the training pipeline:
-python src/train.py
-
-Build and run with Docker:
-docker build -t churn-prediction .
-docker run -p 5000:5000 churn-prediction
