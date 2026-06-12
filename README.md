@@ -28,7 +28,7 @@ The pipeline addresses class imbalance using SMOTE and leverages Logistic Regres
 ```bash
 # 1. Clone the repository
 git clone https://github.com/Yavar-NK/Churn-Prediction.git
-
+```
 # 2. Install dependencies
 pip install -r requirements.txt
 
