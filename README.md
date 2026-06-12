@@ -25,15 +25,16 @@ The pipeline addresses class imbalance using SMOTE and leverages Logistic Regres
 
 ## ⚙️ How to Run
 
-**1. Clone the repository:**
 ```bash
+# 1. Clone the repository
 git clone [https://github.com/Yavar-NK/Churn-Prediction.git](https://github.com/Yavar-NK/Churn-Prediction.git)
-```
-**2. Install dependencies:**
-```bash
+
+# 2. Install dependencies
 pip install -r requirements.txt
-```
-**4. Build and run with Docker:**
-```bash
+
+# 3. Run the training pipeline
+python src/train.py
+
+# 4. Build and run with Docker
 docker build -t churn-prediction .
 docker run -p 5000:5000 churn-prediction
