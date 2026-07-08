@@ -14,17 +14,35 @@ git clone https://github.com/Yavar-NK/Churn-Prediction.git
 cd Churn-Prediction
 ```
 
-### 2. Install Dependencies
+## 🚀 Local Execution Guide
+
+Follow these step-by-step instructions to set up the environment, train the model, and deploy the production API locally.
+
+### 1️⃣ Install Dependencies
+Ensure you have Python installed, then install all the required MLOps and Machine Learning packages using `pip`:
+```bash
 pip install -r requirements.txt
+```
+### 2️⃣ Run Training Pipeline (MLflow Tracking)
+Make sure the dataset IT_customer_churn.csv is placed directly in the root directory. Then, execute the pipeline to handle data balancing (SMOTE), model training, and MLflow logging : 
+python src/train.py 
 
-### 3. Run Training Pipeline (MLflow Tracking)
-Make sure IT_customer_churn.csv is placed in the root directory, then execute :
-python src/train.py
+💡 Note: This will automatically log your metrics, parameters, and model artifacts into the local mlruns directory.
 
-### 4. Start FastAPI Production Server
-Once the model is trained and saved, launch the web service :
+### 3️⃣ Start FastAPI Production Server
+Once the model is successfully trained and saved under the models/ directory, launch the high-performance Uvicorn web 'server':
+```bash 
 uvicorn src.app:app --reload
-Open your browser and navigate to http://127.0.0.1:8000/docs to interact with the live Swagger UI API documentation.
+```
+
+### 🔍 Interactive API Testing
+After starting the server, open your browser and navigate 'to':
+```bash
+
+👉 http://127.0.0.1:8000/docs
+```
+This will open the interactive Swagger UI documentation, allowing you to send live test payloads (JSON requests) to the model and receive real-time churn predictions.
+
 
 ### ✨ Key Capabilities
 
