@@ -36,10 +36,11 @@ uvicorn src.app:app --reload
 ```
 
 ### 🎯 3. Interactive API Testing (Swagger UI)
-Once the server is running, you can test the API live in your browser :
+Once the server is running, you can access the interactive API documentation locally at:
 
-👉 [Click here to access the Live Swagger API Documentation](http://127.0.0.1:8000/docs)
-This will open the interactive Swagger UI documentation, allowing you to send live test payloads (JSON requests) to the model and receive real-time churn predictions.
+`http://127.0.0.1:8000/docs`
+
+*(Note: To view this page, ensure the Uvicorn server is running on your machine.)*
 
 
 
