@@ -35,13 +35,12 @@ Once the model is successfully trained and saved under the models/ directory, la
 uvicorn src.app:app --reload
 ```
 
-### 🔍 Interactive API Testing
-After starting the server, open your browser and navigate 'to':
-```bash
+### 🎯 3. Interactive API Testing (Swagger UI)
+Once the server is running, you can test the API live in your browser :
 
-👉 http://127.0.0.1:8000/docs
-```
+👉 [Click here to access the Live Swagger API Documentation](http://127.0.0.1:8000/docs)
 This will open the interactive Swagger UI documentation, allowing you to send live test payloads (JSON requests) to the model and receive real-time churn predictions.
+
 
 
 ### ✨ Key Capabilities
