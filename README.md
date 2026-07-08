@@ -1,40 +1,81 @@
 # 🚀 Customer Churn Prediction MLOps Pipeline
 
 ## 📝 Description
-This project implements an end-to-end Machine Learning pipeline to predict customer churn. It focuses on robust data preprocessing, feature engineering, and MLOps best practices to ensure **reproducibility** and **experiment tracking**.
+This project implements an end-to-end Machine Learning pipeline to predict customer churn. It focuses on robust data preprocessing, feature engineering, and MLOps best practices to ensure **reproducibility**, **experiment tracking**, and **production-ready model serving**.
 
 ## 🛠️ Getting Started
-Ready to explore the pipeline? Follow these simple steps to set it up locally:
+Follow these simple steps to set up and run the pipeline locally, or quickly explore the workflow in your browser:
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/YOUR_NOTEBOOK_ID)
+
+### 1. Clone the Repository & Navigate
 ```bash
-git clone [https://github.com/Yavar-NK/churn-prediction.git](https://github.com/Yavar-NK/churn-prediction.git)
-cd churn-prediction
+git clone https://github.com/Yavar-NK/Churn-Prediction.git
+cd Churn-Prediction
+```
 
-````
+### 2. Install Dependencies
+pip install -r requirements.txt
+
+### 3. Run Training Pipeline (MLflow Tracking)
+Make sure IT_customer_churn.csv is placed in the root directory, then execute :
+python src/train.py
+
+### 4. Start FastAPI Production Server
+Once the model is trained and saved, launch the web service :
+uvicorn src.app:app --reload
+Open your browser and navigate to http://127.0.0.1:8000/docs to interact with the live Swagger UI API documentation.
 
 ### ✨ Key Capabilities
-- 🧹 **Automated Preprocessing**: Handles missing values, performs label encoding, and applies Min-Max scaling for numerical features as implemented in the `src/train.py` module.
-- ⚙️ **Feature Engineering**: Utilizes `pandas.get_dummies` for categorical variables and cleans datasets by removing redundant identifiers and mapping categorical strings to numerical values.
-- 📈 **Experiment Tracking**: Integrated with **MLflow** to track metrics, parameters, and model versions automatically during training runs (`mlflow.start_run()`).
-- 🐳 **Reproducible Environment**: Includes `conda.yaml` and a `Dockerfile` to ensure the project runs identically across different development and production environments.
 
-## Project Structure
-The project follows a clean, modular structure:
+| Capability | Tech Stack | Engineered Implementation |
+| :--- | :--- | :--- |
+| **🧹 Automated Preprocessing** | `pandas` \| `scikit-learn` | Dynamic missing value removal, precise binary mapping, and identical column-alignment across pipelines. |
+| **📉 Robust Feature Scaling** | `MinMaxScaler` Simulation | Synchronized feature range normalization ($0$ to $1$) hardcoded inside the inference layer to completely eliminate data skew. |
+| **⚖️ Class Imbalance Handling** | `SMOTE` (Imblearn) | Synthetic over-sampling of the minority class to drastically optimize model `recall_score` on churners. |
+| **📈 Experiment Tracking** | `MLflow` | Automatic logging of parameters (`max_iter`, `C`), performance metrics (`accuracy`, `f1_score`), and granular model versioning. |
+| **⚡ Production Serving** | `FastAPI` \| `Pydantic` | High-performance async REST API with rigorous request schema validation and real-time latency tracking middleware. |
+| **🐳 Container Deployment** | `Docker` | Isolated, immutable, and 100% reproducible execution environment via optimized `Dockerfile`. |
 
-- **src/train.py**: Contains the core training and preprocessing pipeline.
-- **src/app.py**: Deployment application script.
-- **models/**: Directory for registered MLflow model artifacts.
-- **conda.yaml**: Configuration for the virtual environment.
-- **Dockerfile**: Configuration for containerizing the project.
-- **requirements.txt**: List of necessary Python dependencies.
+> 💡 **Architectural Note:** The preprocessing and feature scaling distributions are mathematically aligned between `train.py` and `app.py`. This ensures that real-time API payloads undergo the exact same transformation as the training data, ensuring production stability.
+
+### 📁 Project Structure
+
+The repository maintains a production-grade, modular layout separating the core training pipeline from the inference serving layer:
+
+```text
+Churn-Prediction/
+├── models/
+│   └── churn_model/         # Serialized MLflow model artifacts (logs, weights, meta)
+├── src/
+│   ├── app.py               # High-performance FastAPI production serving script
+│   └── train.py             # Core pipeline (Preprocessing, SMOTE, MLflow tracking)
+├── Dockerfile               # Optimized deployment containerization recipe
+├── IT_customer_churn.csv    # Local dataset ensuring 100% network-independent execution
+└── requirements.txt         # Hardcoded python dependencies for environment lock-in
+```
+
+| Component | Responsibility | Key Engineering Focus |
+| :--- | :--- | :--- |
+| 🛠️ `src/train.py` | Pipeline Automation | Ingests local CSV, runs SMOTE, and registers artifacts to MLflow registry. |
+| ⚡ `src/app.py` | Production Serving | Initializes FastAPI web-server, applies real-time scaling, and exposes `/predict`. |
+| 📦 `models/` | Artifact Storage | Holds the frozen operational model state used live by the inference layer. |
+| 🐳 `Dockerfile` | Containerization | Packages the app into an isolated, immutable layer ready for AWS/GCP or local Docker run. |
 
 ## 🚀 Technical Implementation
 
-The preprocessing logic is designed to ensure data quality through the following steps:
+> [!IMPORTANT]
+> ### 📊 Class Imbalance Mitigation (SMOTE)
+> To prevent the Logistic Regression model from biasing toward non-churning customers, the training pipeline synthesizes new minority class examples using **SMOTE**. This guarantees balanced decision boundaries and dramatically improves the model's sensitivity (`recall_score`) toward high-risk accounts.
 
-- 🧹 **Data Cleaning**: Dropping redundant IDs and handling "No internet service" flags.
-- 📉 **Feature Scaling**: Normalizing charges to improve the model's convergence rate.
-- 📊 **Experiment Tracking**: By wrapping the training process in `mlflow.start_run()`, the pipeline systematically logs every iteration, allowing for granular analysis of model performance.
+> [!TIP]
+> ### 📉 Production Feature Alignment & Scaling
+> Real-time input JSON payloads submitted to the FastAPI `/predict` endpoint undergo dynamic normalization. By simulating the `MinMaxScaler` distribution parameters inside the serving layer, the system completely eliminates **Data Skew / Feature Mismatch** (preventing artificial $1.0$ probability locks).
 
----
-*Developed by Yavar* 👨‍💻
+> [!NOTE]
+> ### 🔬 Granular Experiment Auditing (MLflow Registry)
+> By wrapping the training execution inside `mlflow.start_run()`, every hyperparameter (`C`, `max_iter`) and evaluation metric is systematically audited. The frozen model state is then seamlessly registered under the `models/churn_model` directory for immutable production deployment.
+
+
+
+
