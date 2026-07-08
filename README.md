@@ -6,7 +6,7 @@ This project implements an end-to-end Machine Learning pipeline to predict custo
 ## 🛠️ Getting Started
 Follow these simple steps to set up and run the pipeline locally, or quickly explore the workflow in your browser:
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/YOUR_NOTEBOOK_ID)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1SVJtXVcO3YsvniMFE6wkm-ocE2iws4HA)
 
 ### 1. Clone the Repository & Navigate
 ```bash
