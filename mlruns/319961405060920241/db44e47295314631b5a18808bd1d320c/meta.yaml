@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Final_Projects/churn_prediction/mlruns/319961405060920241/db44e47295314631b5a18808bd1d320c/artifacts
+end_time: 1783544859523
+entry_point_name: ''
+experiment_id: '319961405060920241'
+lifecycle_stage: active
+run_id: db44e47295314631b5a18808bd1d320c
+run_name: powerful-ant-495
+run_uuid: db44e47295314631b5a18808bd1d320c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1783544854628
+status: 4
+tags: []
+user_id: Yavar

@@ -80,6 +80,11 @@ def predict_churn(data: CustomerData):
         input_dict = data.model_dump()
         input_data = pd.DataFrame([input_dict])
         
+        # 🎯 Apply feature scaling to match the training pipeline distribution (MinMaxScaler simulation)
+        input_data['tenure'] = input_data['tenure'] / 72.0
+        input_data['MonthlyCharges'] = (input_data['MonthlyCharges'] - 18.25) / (118.75 - 18.25)
+        input_data['TotalCharges'] = (input_data['TotalCharges'] - 18.8) / (8684.8 - 18.8)
+        
         # Align features with the model's training expectations to prevent mismatches
         expected_features = model.feature_names_in_
         input_data = input_data.reindex(columns=expected_features, fill_value=0)

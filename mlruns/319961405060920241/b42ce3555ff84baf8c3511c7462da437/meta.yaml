@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Final_Projects/churn_prediction/mlruns/319961405060920241/b42ce3555ff84baf8c3511c7462da437/artifacts
+end_time: 1783545916021
+entry_point_name: ''
+experiment_id: '319961405060920241'
+lifecycle_stage: active
+run_id: b42ce3555ff84baf8c3511c7462da437
+run_name: thundering-asp-139
+run_uuid: b42ce3555ff84baf8c3511c7462da437
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1783545884527
+status: 3
+tags: []
+user_id: Yavar

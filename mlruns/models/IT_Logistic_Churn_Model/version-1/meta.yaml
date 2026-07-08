@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1783545907588
+current_stage: None
+description: null
+last_updated_timestamp: 1783545907588
+name: IT_Logistic_Churn_Model
+run_id: b42ce3555ff84baf8c3511c7462da437
+run_link: null
+source: file:///D:/Final_Projects/churn_prediction/mlruns/319961405060920241/b42ce3555ff84baf8c3511c7462da437/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///D:/Final_Projects/churn_prediction/mlruns/319961405060920241/b42ce3555ff84baf8c3511c7462da437/artifacts/model
+user_id: null
+version: 1
